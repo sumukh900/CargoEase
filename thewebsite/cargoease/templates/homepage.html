@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CargoEase - Simplifying Logistics</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .jumbotron {
+            background-color: #007bff;
+            color: white;
+            padding: 50px;
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+        .lead {
+            font-size: 24px;
+        }
+        .form-container {
+            margin-top: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">CargoEase</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/consignee_sign_up">Consignee Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/consignee_login">Consignee Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/carrier_signup">Carrier Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/carrier_login">Carrier Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Welcome to CargoEase</h1>
+            <p class="lead">Simplifying Logistics for Consignees and Carriers</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Starting Point">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Ending Point">
+                </div>
+                <button type="submit" class="btn btn-primary">Search Carriers</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

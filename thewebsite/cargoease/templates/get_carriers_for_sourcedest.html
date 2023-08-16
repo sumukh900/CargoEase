@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with userfromsession=request.session.user %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CargoEase - Consignee Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your custom CSS and scripts here -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            padding: 50px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+	input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .radio-group {
+    margin-bottom: 15px;
+  }
+  .radio-group label {
+    margin-right: 15px;
+  }
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+    </style>
+<head>
+    <title>Carriers Information</title>
+</head>
+<body>
+<div class="container">
+    <h2>Here are all the carriers in the given source and destination</h2>
+	<H4> Hi {{userfromsession.username}}</h4>
+    <form method="POST" action = "../get_carriers_for_sourcedest/">
+	{% csrf_token %}
+	routeID Is: {{ request.route_id }} </br></br>
+        Your source:<label for="Source">{{ request.source }}</label></br>
+        Your destination:<label for="destination">{{ request.destination }}</label></br>
+        Distance between the given locations is:<label for="distance">{{ request.distance }}</label></br>
+        Your consignment weight in Tonnes is <label for="weight">{{ request.weight }}</label></br></br></br>
+
+        Select one of the operator to serve you</br></br>
+        {% for x in carriers %}
+	<input type="radio" name="selected_carrier" value="{{ x.carrier_id }}">
+        {{ x.carrier_id }}
+        </br>{{ x.price }} per ton per kilometer
+        </br>Calculated Total: <span id="total-{{ x.carrier_id }}"></span>
+        </br></br>
+        {% endfor %}
+        
+        <button type="submit" class="btn btn-primary">Place Order</button>
+    </form>
+</div>
+
+<script>
+    {% for x in carriers %}
+	var price = {{ x.price }};
+        var distance = {{ request.distance }};
+        var weight = {{ request.weight }};
+        var total = price * distance * weight;
+        document.getElementById("total-{{ x.carrier_id }}").textContent =  + total;
+    {% endfor %}
+</script>
+</body>
+</html>
+</form>
+{% endwith %}
+{% endblock %}

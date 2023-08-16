@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with userfromsession=request.session.carrier %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CargoEase - Carrier Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your custom CSS and scripts here -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            padding: 50px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Your Carrier Dashboard</h2>
+        <h3>Welcome to CargoEase, {{ userfromsession.carrier_id}}!</h3>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Consignee Details</h4>
+                <p class="card-text"><strong>Name:</strong> {{ userfromsession.first_name}} {{ userfromsession.last_name}}</p>
+                <!-- Add other consignee attributes here -->
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title"><a href="../carrier_addroute">New route adding</a></h4>
+		<h4 class="card-title"><a href="https://www.w3schools.com">Adding new Container</a></h4>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+ {% endwith %}
+{% endblock %}
